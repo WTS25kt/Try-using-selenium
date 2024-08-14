@@ -8,9 +8,9 @@ from urllib.parse import quote as url_quote
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET'])
-def home():
-    return "Welcome to the Chrome Automation App!"
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route('/automate', methods=['POST'])
 def automate():
@@ -46,4 +46,4 @@ def automate_chrome_search(query):
     return first_result
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(debug=True)

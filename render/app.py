@@ -29,6 +29,9 @@ def automate_chrome_search(query):
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
 
+    # Chromeのバイナリの場所を指定
+    chrome_options.binary_location = "/tmp/google-chrome"
+
     # ChromeDriverのパスを指定
     service = ChromeService(executable_path='/tmp/chromedriver')
     driver = webdriver.Chrome(service=service, options=chrome_options)

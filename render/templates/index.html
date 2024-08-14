@@ -7,33 +7,33 @@
 </head>
 <body>
     <h1>Automate Task</h1>
-    <form action="/automate" method="post">
-        <button type="submit">Run Automation</button>
-    </form>
-</body>
-<!-- index.html のボタン押下時の処理 -->
-<script>
-    document.getElementById('searchButton').addEventListener('click', function() {
-        const query = document.getElementById('searchInput').value;
-        
-        fetch('/automate', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'  // ここで Content-Type を正しく設定
-            },
-            body: JSON.stringify({ query: query })  // JSON形式でデータを送信
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.error) {
-                alert('Error: ' + data.error);
-            } else {
-                alert('Search result: ' + data.result);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
+    <input type="text" id="searchInput" placeholder="Enter search query">
+    <button id="searchButton" type="button">Run Automation</button>
+
+    <!-- index.html のボタン押下時の処理 -->
+    <script>
+        document.getElementById('searchButton').addEventListener('click', function() {
+            const query = document.getElementById('searchInput').value;
+            
+            fetch('/automate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'  // ここで Content-Type を正しく設定
+                },
+                body: JSON.stringify({ query: query })  // JSON形式でデータを送信
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert('Error: ' + data.error);
+                } else {
+                    alert('Search result: ' + data.result);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         });
-    });
-    </script>    
+    </script>  
+</body>
 </html>

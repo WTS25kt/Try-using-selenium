@@ -30,7 +30,7 @@ def automate_chrome_search(query):
     chrome_options.add_argument("--disable-dev-shm-usage")
 
     # Chromeのバイナリの場所を指定
-    chrome_options.binary_location = "/tmp/google-chrome"
+    chrome_options.binary_location = "/tmp/google-chrome/opt/google/chrome/google-chrome"
 
     # ChromeDriverのパスを指定
     service = ChromeService(executable_path='/tmp/chromedriver')

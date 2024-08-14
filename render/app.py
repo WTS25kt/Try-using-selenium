@@ -29,7 +29,7 @@ def automate_chrome_search(query):
     chrome_options.add_argument("--disable-dev-shm-usage")
 
     # ChromeDriverのパスを指定
-    service = ChromeService(executable_path='/opt/bin/chromedriver')
+    service = ChromeService(executable_path='/tmp/chromedriver')
     driver = webdriver.Chrome(service=service, options=chrome_options)
     
     try:

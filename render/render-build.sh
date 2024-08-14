@@ -9,8 +9,8 @@ apt-get -f install -y
 # Install ChromeDriver
 CHROME_DRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
 wget -N https://chromedriver.storage.googleapis.com/${CHROME_DRIVER_VERSION}/chromedriver_linux64.zip
-unzip chromedriver_linux64.zip -d /opt/bin/
-chmod +x /opt/bin/chromedriver
+unzip chromedriver_linux64.zip -d /tmp/
+chmod +x /tmp/chromedriver
 
 # Clean up
 rm google-chrome-stable_current_amd64.deb

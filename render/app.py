@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.keys import Keys  # Keysのインポート
+from selenium.webdriver.common.keys import Keys
 
 app = Flask(__name__)
 
@@ -14,12 +14,12 @@ def home():
 @app.route('/automate', methods=['POST'])
 def automate():
     query = request.json.get('query')
-    if not query:  # クエリが空の場合のハンドリング
+    if not query:
         return jsonify({'error': 'Query parameter is required.'}), 400
     try:
         result = automate_chrome_search(query)
         return jsonify({'result': result})
-    except Exception as e:  # エラーハンドリング
+    except Exception as e:
         return jsonify({'error': str(e)}), 500
 
 def automate_chrome_search(query):
@@ -28,7 +28,8 @@ def automate_chrome_search(query):
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
 
-    service = ChromeService(ChromeDriverManager().install())
+    # ChromeDriverのパスを指定
+    service = ChromeService(executable_path='/opt/bin/chromedriver')
     driver = webdriver.Chrome(service=service, options=chrome_options)
     
     try:

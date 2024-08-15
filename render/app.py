@@ -30,6 +30,7 @@ def automate():
         return jsonify({'error': str(e)}), 500
 
 def automate_chrome_search(query):
+    chrome_options = Options()
     chrome_path = "/tmp/google-chrome/opt/google/chrome/google-chrome"
     # chrome_pathが見つからない場合、findで動的にパスを取得
     if not os.path.exists(chrome_path):
@@ -44,7 +45,6 @@ def automate_chrome_search(query):
 
     driver = None  # 初期化
     try:
-        chrome_options = Options()
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")

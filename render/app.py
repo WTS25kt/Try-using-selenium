@@ -5,8 +5,12 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
 from urllib.parse import quote as url_quote
+import logging
 
 app = Flask(__name__)
+
+# ログの設定
+logging.basicConfig(level=logging.INFO)
 
 @app.route('/')
 def index():
@@ -30,19 +34,24 @@ def automate_chrome_search(query):
     chrome_options.add_argument("--disable-dev-shm-usage")
 
     # Chromeのバイナリの場所を指定
-    chrome_options.binary_location = "/tmp/google-chrome/opt/google/chrome/google-chrome"
+    chrome_options.binary_location = "/tmp/google-chrome"
+    logging.info(f"Using Chrome binary at: {chrome_options.binary_location}")
 
     # ChromeDriverのパスを指定
     service = ChromeService(executable_path='/tmp/chromedriver')
+    logging.info(f"Using ChromeDriver at: {service.path}")
+    
     driver = webdriver.Chrome(service=service, options=chrome_options)
     
     try:
         driver.get('https://www.google.com')
+        logging.info("Google page loaded successfully")
         search_box = driver.find_element('name', 'q')
         search_box.send_keys(query + Keys.RETURN)
         
         driver.implicitly_wait(5)
         first_result = driver.find_element('css selector', 'h3').text
+        logging.info(f"First result: {first_result}")
     finally:
         driver.quit()
     

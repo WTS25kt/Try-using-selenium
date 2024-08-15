@@ -52,9 +52,9 @@ def automate_chrome_search(query):
         chrome_options.binary_location = chrome_path  # 修正済みのパス
         service = ChromeService(executable_path='/tmp/chromedriver')
 
-        app.logger.info(f"Starting Chrome with binary: {chrome_options.binary_location} and driver: {service.path}")
+        app.logger.info(f"ここまでは問題なし:Starting Chrome with binary: {chrome_options.binary_location} and driver: {service.path}")
         driver = webdriver.Chrome(service=service, options=chrome_options)
-        app.logger.info("ChromeDriver started successfully")
+        app.logger.info("ここは出力されていない:ChromeDriver started successfully")
         
         driver.get('https://www.google.com')
         app.logger.info("Google page loaded successfully")

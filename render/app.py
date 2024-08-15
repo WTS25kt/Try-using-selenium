@@ -43,7 +43,7 @@ def automate_chrome_search(query):
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
         
-        chrome_options.binary_location = "/tmp/google-chrome"
+        chrome_options.binary_location = chrome_path  # 修正済みのパス
         service = ChromeService(executable_path='/tmp/chromedriver')
 
         app.logger.info(f"Starting Chrome with binary: {chrome_options.binary_location} and driver: {service.path}")

@@ -26,5 +26,3 @@ chmod +x /tmp/chromedriver
 # クリーンアップ
 rm google-chrome-stable_current_amd64.deb
 rm /tmp/chromedriver_linux64.zip
-
-

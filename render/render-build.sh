@@ -6,6 +6,10 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 apt-get update
 dpkg -x google-chrome-stable_current_amd64.deb /tmp/google-chrome
 
+# List the contents of the directory to check the installation
+echo "Contents of /tmp/google-chrome/opt/google/chrome/:"
+ls -l /tmp/google-chrome/opt/google/chrome/
+
 # インストールが成功したかを確認
 if [ -f "/tmp/google-chrome/opt/google/chrome/google-chrome" ]; then
   echo "Google Chrome installed successfully at /tmp/google-chrome/opt/google/chrome/google-chrome"
@@ -22,3 +26,5 @@ chmod +x /tmp/chromedriver
 # クリーンアップ
 rm google-chrome-stable_current_amd64.deb
 rm /tmp/chromedriver_linux64.zip
+
+

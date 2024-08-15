@@ -6,6 +6,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
 from urllib.parse import quote as url_quote
 import logging
+import os
 
 app = Flask(__name__)
 
@@ -29,6 +30,12 @@ def automate():
         return jsonify({'error': str(e)}), 500
 
 def automate_chrome_search(query):
+    chrome_path = "/tmp/google-chrome/opt/google/chrome/google-chrome"
+    if os.path.exists(chrome_path):
+        print(f"Chrome binary found at {chrome_path}")
+    else:
+        print(f"Chrome binary not found at {chrome_path}")
+
     driver = None  # 初期化
     try:
         chrome_options = Options()

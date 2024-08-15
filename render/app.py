@@ -31,9 +31,9 @@ def automate():
 
 def automate_chrome_search(query):
     chrome_path = "/tmp/google-chrome/opt/google/chrome/google-chrome"
-# chrome_pathが見つからない場合、findで動的にパスを取得
-if not os.path.exists(chrome_path):
-    chrome_path = os.popen('find /tmp -name "google-chrome" -type f').read().strip()
+    # chrome_pathが見つからない場合、findで動的にパスを取得
+    if not os.path.exists(chrome_path):
+        chrome_path = os.popen('find /tmp -name "google-chrome" -type f').read().strip()
 
     chrome_options.binary_location = chrome_path
 
